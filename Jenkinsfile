@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "vasylkosiv/go-app"
-    registryCredential = 'dockerhub-cred'
+    registryCredential = 'docker-creds'
     dockerImage = ''
   }
   agent any
@@ -18,6 +18,9 @@ pipeline {
         }
       }
     }
+
+
+
     stage('Deploy Image') {
       steps{
         script {
