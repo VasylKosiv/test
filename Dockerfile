@@ -1,7 +1,17 @@
-FROM node:8-alpine
+FROM golang:alpine3.11 AS build
 
-COPY . src/
 WORKDIR /src
+COPY hw1.go .
+RUN CGO_ENABLED=0 go build hw1.go
 
-EXPOSE 3000
-CMD [ "npm", "start" ]
+FROM scratch
+
+LABEL NAME="vasylkosiv/go-app"
+LABEL VERSION="0.0.1"
+LABEL MAINTAINER="VasCos"
+
+WORKDIR /hw1
+COPY --from=build /src/hw1 .
+
+ENTRYPOINT ["/hw1/hw1"]
+CMD ["987654321"]
