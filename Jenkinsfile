@@ -23,6 +23,7 @@ pipeline {
     }
     stage('Deploy Image') {
       steps{
+        set +x
         sh "docker login -u vasylkosiv -p $registryCredential"
         sh "docker push $registry:$BUILD_NUMBER" 
       }
