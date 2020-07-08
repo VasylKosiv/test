@@ -25,7 +25,7 @@ pipeline {
       }
       steps{
         
-        sh "docker login -u vasylkosiv -p $registryCredential"
+        sh "docker login -u vasylkosiv -p '$registryCredential'"
         sh "docker push $registry:$BUILD_NUMBER" 
       }
     }
