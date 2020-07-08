@@ -20,9 +20,7 @@ pipeline {
     }
     stage('Run container') {
       steps{
-        script {
-          dockerContainer = docker.run dockerImage
-        }
+        sh 'docker run  ${dockerImage}'
       }
     }
 
