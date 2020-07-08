@@ -20,9 +20,7 @@ pipeline {
     }
     stage('Run container') {
       steps{
-        script{
-         docker.image().withRun('-d')
-        }
+        sh "docker run $registry:$BUILD_NUMBER"
       }
     }
 
