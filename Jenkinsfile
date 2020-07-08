@@ -21,7 +21,7 @@ pipeline {
     stage('Run container') {
       steps{
         script{
-         docker.image(dockerImage).withRun('-d')
+         docker.image().withRun('-d')
         }
       }
     }
