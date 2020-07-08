@@ -1,8 +1,6 @@
 pipeline {
   environment {
     registry = "vasylkosiv/go-app"
-    registryCredential = 'docker-creds'
-    dockerImage = ''
   }
   agent any
   stages {
@@ -22,8 +20,11 @@ pipeline {
       }
     }
     stage('Deploy Image') {
+      environment {
+        registryCredential = credentials('docker-creds')
+      }
       steps{
-        set +x
+        
         sh "docker login -u vasylkosiv -p $registryCredential"
         sh "docker push $registry:$BUILD_NUMBER" 
       }
