@@ -6,16 +6,14 @@ pipeline {
   }
   agent any
   stages {
-    stage('Cloning Git') {
+    stage('Pulling from Git') {
       steps {
         git 'https://github.com/VasylKosiv/test.git'
       }
     }
-    stage('Building image') {
+    stage('Building docker image') {
       steps{
-        script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
-        }
+        sh "docker build -t $registry:$BUILD_NUMBER"
       }
     }
     stage('Run container') {
@@ -23,9 +21,6 @@ pipeline {
         sh "docker run $registry:$BUILD_NUMBER"
       }
     }
-
-
-
     stage('Deploy Image') {
       steps{
         script {
