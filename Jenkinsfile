@@ -20,7 +20,7 @@ pipeline {
     }
     stage('Run container') {
       steps{
-        sh 'docker run dockerImage'
+        sh 'docker run vasylkosiv/go-app'
       }
     }
 
