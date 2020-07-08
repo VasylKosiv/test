@@ -13,7 +13,7 @@ pipeline {
     }
     stage('Building docker image') {
       steps{
-        sh "docker build -t $registry:$BUILD_NUMBER"
+        sh "docker build -t $registry:$BUILD_NUMBER ."
       }
     }
     stage('Run container') {
