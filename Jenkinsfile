@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "vasylkosiv/go-app"
-    registryCredential = 'dockerhub'
+    registryCredential = 'dockerhub_cred'
     dockerImage = ''
   }
   agent any
