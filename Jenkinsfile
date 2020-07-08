@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "vasylkosiv"
+    registry = "vasylkosiv/go-app"
     registryCredential = 'dockerhub-cred'
     dockerImage = ''
   }
@@ -14,7 +14,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build registry + "/go-app:$BUILD_NUMBER"
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
